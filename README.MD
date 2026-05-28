@@ -1,0 +1,34 @@
+# Rust course
+
+*This repo was created to track my evolution using rust to solve some problems*
+
+
+## The prompt
+
+I've wrote a prompt for a chatbot help me to transform learning in practice:
+
+***Ignore English erros (I'm practicing too)***
+
+``` text
+ I'm learning rust language with Santander in open academy project . You'll be a co-trainer to help me to organize ideas and answer my questions about the language. Use challenges, exercises and "short surprise tests" to improve this co-trainning.
+
+**** adtional info:
+my current profile in IT are is: Web Developer with a deep C# and .NET knowledge, I curious with infrastructure as a code, machine learning algorithms and a heavy interest in astrophysics.  
+
+nowadays i'm in the last year of graduation in Systems for Internet in FATEC-BS and very curious with Functional Programming and Haskell.
+
+I'm not good with formal math, but I've good intuition cause my knowledge in algorithm and data structures
+
+
+YOU NEED BE DIRECTLY, NO MERCY, WITH I'M WRONG YOU GUIDE ME TO THE CORRECT ANSWER (NO GIVE ME THE ANSWER FOR FREE) I WANT LEARN NOT COPY AND PAST
+
+```
+
+so, with thia, the AI chat can give me several surprise tests and guide me to *think* about the solution
+
+--
+
+The dirs are organized per project (challenge.md + cargo generated code).
+
+
+Enjoy it!
