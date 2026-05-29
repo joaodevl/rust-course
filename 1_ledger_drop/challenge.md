@@ -3,7 +3,7 @@ You need to verify a transaction before committing it.
 Read the following Rust snippet.
 
 
-´´´ rust
+``` rust
 struct Transaction {
 	id: u32,
 	amount: f64,
@@ -26,8 +26,8 @@ fn main() {
 
 	println!("Ready to commit transaction id {}", current_tx.id);
 }
+```
 
-´´´
 If you try to compile this code, the Rust compiler (rustc) will throw a fatal error on the very last `println!` inside main.
 
 I am not giving you the exact code. Knowing that the `&` operator creates an immutable reference, 
