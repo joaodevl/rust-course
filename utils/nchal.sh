@@ -3,14 +3,20 @@
 CHAL_DESC_FILE="challenge.md"
 SOLUTION_NAME="solution"
 
-if [ $# -ne 1 ]; then
-    echo -e "nchal need the name of the challenge to run...\n\nEx: nchal \"<chal name>\"\n"
+if [ $# -lt 1 ] || [ $# -gt 2 ]; then
+    echo -e "nchal need the name of the challenge to run...\n\nEx: nchal \"<chal name>\" [bin|lib]\n"
     exit 1
 fi
 
 chal_name="$1"
+proj_type="${2:-bin}"
 
-echo -e "creating challenge folder for: ${chal_name} ...\n"
+if [[ "$proj_type" != "bin" && "$proj_type" != "lib" ]]; then 
+	echo -e "Error: The second argument must be 'bin' or 'lib'.\n"
+	exit 1
+fi
+
+echo -e "creating challenge folder for: ${chal_name} (${proj_type}) ...\n"
 
 fmt_chal_name="${chal_name,,}"
 fmt_chal_name="${fmt_chal_name// /_}"
@@ -28,11 +34,17 @@ if [ -d "$TARGET_DIR" ]; then
     exit 1
 fi
 
-mkdir -p "$TARGET_DIR" && touch "$TARGET_DIR/${CHAL_DESC_FILE}" && (cd "$TARGET_DIR" && cargo new "$SOLUTION_NAME" --quiet)
+cargo_flags="--quiet"
+if [ "$proj_type" == "lib" ]; then
+	cargo_flags="--lib --quiet"
+fi
+
+
+mkdir -p "$TARGET_DIR" && touch "$TARGET_DIR/${CHAL_DESC_FILE}" && (cd "$TARGET_DIR" && cargo new "$SOLUTION_NAME" $cargo_flags)
 
 if [ ! -d "${TARGET_DIR}/$SOLUTION_NAME" ] || [ ! -f "${TARGET_DIR}/$CHAL_DESC_FILE" ]; then
     echo -e "Fail to create files...\n"
     exit 1
 fi
 
-echo -e "${TARGET_DIR} is created with:\n$SOLUTION_NAME (rust proj cargo generated)\n$CHAL_DESC_FILE"
+echo -e "${TARGET_DIR} is created with:\n$SOLUTION_NAME (rust $proj_type cargo generated)\n$CHAL_DESC_FILE"
